@@ -21,7 +21,7 @@ favicon: /favicon.svg
 From Jira planning to adversarial merge review for Dev, QA, and technical management.
 
 <div class="pt-10 opacity-80">
-Tuyen Pham - June 2026
+June 2026
 </div>
 
 <!--
