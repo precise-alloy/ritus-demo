@@ -441,7 +441,7 @@ layout: two-cols-header
 
 ::right::
 
-- **address-feedback** - turn PR review comments into fix tasks, then a local commit
+- **address-feedback** - turn PR review comments into fix tasks, prepare a local commit
 - **wrap-up** - post-review cleanup: promote exploration, verify docs, report status
 - **comprehension** - after wrap-up, brief the human and run an advisory quiz on what shipped
 
