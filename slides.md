@@ -22,7 +22,7 @@ favicon: /favicon.svg
 Skill-based architecture, independent verification, and a workflow that runs itself - on rails.
 
 <div class="pt-10 opacity-80">
-July 2026
+Dinh Pham July 2026
 </div>
 
 <!--
@@ -232,7 +232,7 @@ flowchart LR
   TR --> |Request approval| AP{"🧑\napprove\nreview + tasks?"}
   AP --> |NO| TR
   AP --> |YES| P{Parallel groups}
-  P --> E1["🤖\nnexecute-task"]
+  P --> E1["🤖\nexecute-task"]
   P --> E2["🤖\nexecute-task"]
   E1 --> V["🤖\nverify-task"]
   E2 --> V
@@ -266,6 +266,7 @@ flowchart LR
   B[Bug report] --> D["debug\n4-phase investigation"]
   D --> G{"🧑\napprove\nroot cause + fix?"}
   G -->|TRIVIAL| I["apply inline\n+ self-verify"]
+  I --> CMP
   G -->|SIMPLE+| E["🤖\nexecute-task\ntdd red-green"]
   E --> V["🤖\nverify-task"]
   V --> VC{Pass?}
