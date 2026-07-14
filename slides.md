@@ -44,10 +44,6 @@ Today is not a re-run. Today is **what changed in v2, and why**.
 
 <a href="https://github.com/precise-alloy/ritus" target="_blank">Repository: Ritus</a>
 
-<div class="pt-6 opacity-80">
-Kudos to anh Truong and anh Tuyen for their solid foundation.
-</div>
-
 <!--
 Set expectations: this is a delta talk, not a tutorial. The audience knows the basics.
 -->
@@ -195,12 +191,12 @@ The shift: from "which role am I" to "which capability does this need".
 AI Agent Workflow = Primary rules + Core workflow + Project profile + Runtime context
 ```
 
-| Layer | Where it lives | What it does |
-| ----- | -------------- | ------------ |
-| Primary rules | CLAUDE.md / copilot-instructions.md | user's directives - highest authority |
-| Core workflow | 20 on-demand skills (plugin) | pure capabilities; main thread dispatches subagents |
-| Project profile | `docs/profiles/*.yml` → `PROJECT_CONTEXT.md` | project facts rendered from YAML |
-| Runtime context | current task file + active skill | what to work on now |
+| Layer           | Where it lives                               | What it does                                        |
+| --------------- | -------------------------------------------- | --------------------------------------------------- |
+| Primary rules   | CLAUDE.md / copilot-instructions.md          | user's directives - highest authority               |
+| Core workflow   | 20 on-demand skills (plugin)                 | pure capabilities; main thread dispatches subagents |
+| Project profile | `docs/profiles/*.yml` → `PROJECT_CONTEXT.md` | project facts rendered from YAML                    |
+| Runtime context | current task file + active skill             | what to work on now                                 |
 
 <div class="pt-4 opacity-80">
 Only primary rules and project context are always on. Everything else is summoned.
@@ -265,19 +261,19 @@ class: text-center
 flowchart LR
   B[Bug report] --> D["debug\n4-phase investigation"]
   D --> G{"🧑\napprove\nroot cause + fix?"}
-  G -->|TRIVIAL| I["apply inline\n+ self-verify"]
-  I --> CMP
+  VC -->|Fail| VX["fix task\nmax 3, then escalate"]
   G -->|SIMPLE+| E["🤖\nexecute-task\ntdd red-green"]
+  VC -->|Pass| PR["🤖\npr-review"]
+  VX --> E
+  PR --> VD{Verdict?}
   E --> V["🤖\nverify-task"]
   V --> VC{Pass?}
-  VC -->|Fail| VX["fix task\nmax 3, then escalate"]
-  VX --> E
-  VC -->|Pass| PR["🤖\npr-review"]
-  PR --> VD{Verdict?}
+  WU --> CMP["comprehension\nbrief + quiz"]
   VD -->|Request changes| FX["fix + re-verify\nmax 3, then escalate"]
   FX --> PR
   VD -->|Approve| WU[wrap-up]
-  WU --> CMP["comprehension\nbrief + quiz"]
+  G -->|TRIVIAL| I["apply inline\n+ self-verify"]
+  I --> CMP
   CMP --> H["🧑\ncommit"]
 ```
 
